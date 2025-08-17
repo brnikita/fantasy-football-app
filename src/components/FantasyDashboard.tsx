@@ -15,12 +15,12 @@ export default function FantasyDashboard() {
             width={48}
             height={41}
           />
-          <h1 className="ml-[70px] font-inter font-normal text-[#ffffffe6] text-2xl tracking-[0] leading-[normal]">
+          <h1 className="ml-[35px] font-inter font-normal text-white/90 text-2xl tracking-[0] leading-[48px]">
             Fantasy Football
           </h1>
         </div>
       </header>
-      <div className="w-full flex flex-col items-center">
+      <div className="w-full flex flex-col items-center bg-neutral-900 pt-[68px]">
         <FilterControls />
         <PlayerDataTable />
       </div>

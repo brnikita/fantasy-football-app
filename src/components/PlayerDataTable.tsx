@@ -31,7 +31,7 @@ export default function PlayerDataTable() {
   }, [paginatedPlayers, state.selectedPlayer, setSelectedPlayer])
 
   return (
-    <section className="items-start px-8 py-0 self-stretch w-full max-w-[1440px] mx-auto flex-[0_0_auto] flex justify-between relative">
+    <section className="items-start px-8 py-0 self-stretch w-full max-w-[1440px] mx-auto flex-[0_0_auto] flex justify-between relative mb-[30px]">
       <PlayerList 
         players={paginatedPlayers}
         totalPlayers={totalPlayers}
