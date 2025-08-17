@@ -67,6 +67,14 @@
   @apply bg-[#1c1c1c] rounded-[8px_8px_0px_0px];
 }
 
+.fantasy-table-header th {
+  pointer-events: none;
+}
+
+.fantasy-table-header th:hover {
+  background-color: transparent !important;
+}
+
 .fantasy-select {
   @apply bg-[#1c1c1c] border-none text-white;
 }

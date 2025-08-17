@@ -31,9 +31,7 @@ export default function FilterControls() {
         value={state.selectedOperator || ""} 
         onValueChange={(value) => setSelectedOperator(value)}
       >
-        <SelectTrigger className="inline-flex items-center gap-4 px-8 py-4 
-        fantasy-select rounded-lg h-auto font-inter font-normal 
-        text-white text-2xl tracking-[0] leading-[normal] [&>svg]:h-9 [&>svg]:w-9">
+        <SelectTrigger className="inline-flex items-center gap-4 px-8 py-4 fantasy-select rounded-lg h-auto font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] [&>svg]:h-9 [&>svg]:w-9 min-w-[280px] max-w-[320px] overflow-hidden text-ellipsis whitespace-nowrap">
           <SelectValue
             placeholder={
               <span className="font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
@@ -57,9 +55,7 @@ export default function FilterControls() {
         onValueChange={(value) => setSelectedGameType(value)}
         disabled={!state.selectedOperator}
       >
-        <SelectTrigger className="inline-flex items-center gap-4 px-8 
-        py-4 fantasy-select rounded-lg h-auto font-inter 
-        font-normal text-white text-2xl tracking-[0] leading-[normal] [&>svg]:h-9 [&>svg]:w-9">
+        <SelectTrigger className="inline-flex items-center gap-4 px-8 py-4 fantasy-select rounded-lg h-auto font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] [&>svg]:h-9 [&>svg]:w-9 min-w-[280px] max-w-[320px] overflow-hidden text-ellipsis whitespace-nowrap">
           <SelectValue
             placeholder={
               <span className="font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
@@ -83,9 +79,7 @@ export default function FilterControls() {
         onValueChange={(value) => setSelectedSlateName(value)}
         disabled={!state.selectedGameType}
       >
-        <SelectTrigger className="inline-flex items-center gap-4 px-8 py-4 fantasy-select 
-        rounded-lg h-auto font-inter font-normal 
-        text-white text-2xl tracking-[0] leading-[normal] [&>svg]:h-9 [&>svg]:w-9">
+        <SelectTrigger className="inline-flex items-center gap-4 px-8 py-4 fantasy-select rounded-lg h-auto font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] [&>svg]:h-9 [&>svg]:w-9 min-w-[280px] max-w-[320px] overflow-hidden text-ellipsis whitespace-nowrap">
           <SelectValue
             placeholder={
               <span className="font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
