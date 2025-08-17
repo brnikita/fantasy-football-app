@@ -50,19 +50,19 @@ export const getFantasyData = (): GameData => {
   }
   
   // Extract unique operators, filtering out null/undefined values
-  const operators = [...new Set(data
+  const operators = Array.from(new Set(data
     .filter(item => item && item.operator)
     .map(item => item.operator)
-  )]
+  ))
   
   // Build game types for each operator
   const gameTypes: { [operator: string]: string[] } = {}
   operators.forEach(operator => {
-    gameTypes[operator] = [...new Set(
+    gameTypes[operator] = Array.from(new Set(
       data
         .filter(item => item && item.operator === operator && item.operatorGameType)
         .map(item => item.operatorGameType)
-    )]
+    ))
   })
   
   // Build slate names for each operator and game type combination
@@ -70,7 +70,7 @@ export const getFantasyData = (): GameData => {
   operators.forEach(operator => {
     slateNames[operator] = {}
     gameTypes[operator].forEach(gameType => {
-      slateNames[operator][gameType] = [...new Set(
+      slateNames[operator][gameType] = Array.from(new Set(
         data
           .filter(item => 
             item && 
@@ -79,7 +79,7 @@ export const getFantasyData = (): GameData => {
             item.operatorName
           )
           .map(item => item.operatorName)
-      )]
+      ))
     })
   })
   
