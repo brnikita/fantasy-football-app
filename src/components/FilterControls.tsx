@@ -25,7 +25,7 @@ export default function FilterControls() {
     : []
 
   return (
-    <section className="inline-flex h-[138px] items-center justify-center gap-8 p-8 bg-[#ffffff1a] rounded-lg">
+    <section className="flex h-[138px] items-center w-full max-w-[1035px] justify-center gap-8 p-9 bg-[#ffffff1a] rounded-lg mb-10">
       {/* Operator Select */}
       <Select 
         value={state.selectedOperator || ""} 

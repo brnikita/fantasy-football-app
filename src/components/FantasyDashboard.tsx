@@ -20,7 +20,7 @@ export default function FantasyDashboard() {
           </h1>
         </div>
       </header>
-      <div className="max-w-[1440px] w-full flex flex-col items-center">
+      <div className="w-full flex flex-col items-center">
         <FilterControls />
         <PlayerDataTable />
       </div>
