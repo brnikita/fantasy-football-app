@@ -31,7 +31,7 @@ export default function FilterControls() {
         value={state.selectedOperator || ""} 
         onValueChange={(value) => setSelectedOperator(value)}
       >
-        <SelectTrigger className="inline-flex items-center gap-4 px-8 py-4 fantasy-select rounded-lg h-auto">
+        <SelectTrigger className="inline-flex items-center gap-4 px-8 py-4 fantasy-select rounded-lg h-auto font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] [&>svg]:h-6 [&>svg]:w-6">
           <SelectValue
             placeholder={
               <span className="font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
@@ -55,7 +55,7 @@ export default function FilterControls() {
         onValueChange={(value) => setSelectedGameType(value)}
         disabled={!state.selectedOperator}
       >
-        <SelectTrigger className="inline-flex items-center gap-4 px-8 py-4 fantasy-select rounded-lg h-auto">
+        <SelectTrigger className="inline-flex items-center gap-4 px-8 py-4 fantasy-select rounded-lg h-auto font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] [&>svg]:h-6 [&>svg]:w-6">
           <SelectValue
             placeholder={
               <span className="font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
@@ -79,7 +79,7 @@ export default function FilterControls() {
         onValueChange={(value) => setSelectedSlateName(value)}
         disabled={!state.selectedGameType}
       >
-        <SelectTrigger className="inline-flex items-center gap-4 px-8 py-4 fantasy-select rounded-lg h-auto">
+        <SelectTrigger className="inline-flex items-center gap-4 px-8 py-4 fantasy-select rounded-lg h-auto font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] [&>svg]:h-6 [&>svg]:w-6">
           <SelectValue
             placeholder={
               <span className="font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">

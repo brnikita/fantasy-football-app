@@ -125,7 +125,7 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
             onValueChange={handlePageChange}
             disabled={totalPages === 0}
           >
-            <SelectTrigger className="w-fit h-12 fantasy-select">
+            <SelectTrigger className="w-fit h-12 fantasy-select [&>svg]:h-6 [&>svg]:w-6 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -146,7 +146,7 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
             value={state.rowsPerPage.toString()} 
             onValueChange={handleRowsPerPageChange}
           >
-            <SelectTrigger className="w-fit h-12 fantasy-select">
+            <SelectTrigger className="w-fit h-12 fantasy-select [&>svg]:h-6 [&>svg]:w-6 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -165,20 +165,20 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
           <Button
             variant="ghost"
             size="sm"
-            className="h-6 w-6 p-0 fantasy-button"
+            className="h-10 w-10 p-0 fantasy-button"
             onClick={handlePreviousPage}
             disabled={state.currentPage <= 1}
           >
-            <ChevronLeftIcon className="h-4 w-4" />
+            <ChevronLeftIcon className="!h-6 !w-6" />
           </Button>
           <Button
             variant="ghost"
             size="sm"
-            className="h-6 w-6 p-0 fantasy-button"
+            className="h-10 w-10 p-0 fantasy-button"
             onClick={handleNextPage}
             disabled={state.currentPage >= totalPages}
           >
-            <ChevronRightIcon className="h-4 w-4" />
+            <ChevronRightIcon className="!h-6 !w-6" />
           </Button>
         </div>
       </footer>
