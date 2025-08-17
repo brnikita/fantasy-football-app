@@ -74,3 +74,33 @@
 .fantasy-button {
   @apply text-white hover:bg-white/10;
 }
+
+.scrollbar-custom {
+  scrollbar-width: thin;
+  scrollbar-color: #1c1c1c #2f2f2f;
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: #2f2f2f;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: #1c1c1c;
+  border-radius: 4px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: #0f0f0f;
+}
+
+.fantasy-select-content {
+  @apply bg-[#1c1c1c] border-none text-white font-inter font-normal text-2xl;
+}
+
+.fantasy-select-item {
+  @apply bg-[#1c1c1c] text-white font-inter font-normal text-2xl tracking-[0] leading-[normal] hover:bg-[#2f2f2f] focus:bg-[#2f2f2f] data-[state=checked]:bg-[#7f7b0e] py-3 px-4;
+}

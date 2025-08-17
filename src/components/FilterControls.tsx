@@ -40,9 +40,9 @@ export default function FilterControls() {
             }
           />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="fantasy-select-content">
           {operators.map((operator) => (
-            <SelectItem key={operator} value={operator}>
+            <SelectItem key={operator} value={operator} className="fantasy-select-item">
               {operator}
             </SelectItem>
           ))}
@@ -64,9 +64,9 @@ export default function FilterControls() {
             }
           />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="fantasy-select-content">
           {gameTypes.map((gameType) => (
-            <SelectItem key={gameType} value={gameType}>
+            <SelectItem key={gameType} value={gameType} className="fantasy-select-item">
               {gameType}
             </SelectItem>
           ))}
@@ -88,9 +88,9 @@ export default function FilterControls() {
             }
           />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="fantasy-select-content">
           {slateNames.map((slateName) => (
-            <SelectItem key={slateName} value={slateName}>
+            <SelectItem key={slateName} value={slateName} className="fantasy-select-item">
               {slateName}
             </SelectItem>
           ))}

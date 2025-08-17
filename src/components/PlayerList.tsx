@@ -65,7 +65,7 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
   const pageOptions = Array.from({ length: totalPages }, (_, i) => i + 1)
 
   return (
-    <div className="flex flex-col w-[947px] h-[620px] items-start relative bg-[#2f2f2f] rounded-lg overflow-hidden">
+    <div className="flex flex-col w-[947px] h-[620px] items-start relative bg-[#2f2f2f] rounded-lg overflow-hidden scrollbar-custom">
       <Table className="w-full">
         <TableHeader className="fantasy-table-header">
           <TableRow className="border-none">
@@ -128,9 +128,9 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
             <SelectTrigger className="w-fit h-12 fantasy-select [&>svg]:h-6 [&>svg]:w-6 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="fantasy-select-content">
               {pageOptions.map((page) => (
-                <SelectItem key={page} value={page.toString()}>
+                <SelectItem key={page} value={page.toString()} className="fantasy-select-item">
                   {page}
                 </SelectItem>
               ))}
@@ -149,10 +149,10 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
             <SelectTrigger className="w-fit h-12 fantasy-select [&>svg]:h-6 [&>svg]:w-6 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="8">8</SelectItem>
-              <SelectItem value="16">16</SelectItem>
-              <SelectItem value="24">24</SelectItem>
+            <SelectContent className="fantasy-select-content">
+              <SelectItem value="8" className="fantasy-select-item">8</SelectItem>
+              <SelectItem value="16" className="fantasy-select-item">16</SelectItem>
+              <SelectItem value="24" className="fantasy-select-item">24</SelectItem>
             </SelectContent>
           </Select>
         </div>
