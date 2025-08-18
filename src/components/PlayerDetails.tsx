@@ -21,7 +21,7 @@ export default function PlayerDetails() {
           <Image
             className="w-full h-64 object-cover"
             alt={state.selectedPlayer?.name || "Player"}
-            src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=400&h=300&fit=crop"
+            src="/tom-brady-1.png"
             width={400}
             height={256}
           />
