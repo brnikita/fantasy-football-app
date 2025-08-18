@@ -13,7 +13,7 @@ import PlayerDataTable from "./PlayerDataTable";
 export default function FantasyDashboard() {
   return (
     <>
-      <header className="w-full h-24 flex items-center justify-center">
+      <header className="w-full h-24 flex items-center justify-center bg-black">
         <div className="max-w-[1440px] w-full flex">
           <Image
             className="w-12 h-[41px] ml-[34px] object-cover"
