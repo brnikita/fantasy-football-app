@@ -113,23 +113,24 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
 
   // Handle player selection from URL
   useEffect(() => {
-    if (urlParams.playerId && state.selectedOperator && state.selectedGameType && state.selectedSlateName && !state.isLoading) {
+    if (urlParams.playerId && state.selectedOperator && state.selectedGameType && state.selectedSlateName) {
       const players = getPlayers(state.selectedOperator, state.selectedGameType, state.selectedSlateName);
       const playerFromUrl = players.find(player => player.id === urlParams.playerId);
       
-      if (playerFromUrl) {
+      if (playerFromUrl && state.selectedPlayer?.id !== playerFromUrl.id) {
         setState(prev => ({
           ...prev,
           selectedPlayer: playerFromUrl,
         }));
       }
     }
-  }, [urlParams.playerId, state.selectedOperator, state.selectedGameType, state.selectedSlateName, state.isLoading]);
+  }, [urlParams.playerId, state.selectedOperator, state.selectedGameType, state.selectedSlateName]);
 
   // Handle loading state based on whether we have URL params or need to auto-select
   useEffect(() => {
     const operators = getOperators();
 
+    // If we already have all selections, turn off loading
     if (
       state.selectedOperator &&
       state.selectedGameType &&
@@ -139,22 +140,23 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       return;
     }
 
-    if (operators.length > 0 && !state.selectedOperator) {
-      const firstOperator = operators[0];
-      const gameTypes = getGameTypes(firstOperator);
-
+    // Auto-select first available options when no selections are made
+    if (operators.length > 0) {
+      const operatorToUse = state.selectedOperator || operators[0];
+      const gameTypes = getGameTypes(operatorToUse);
+      
       if (gameTypes.length > 0) {
-        const firstGameType = gameTypes[0];
-        const slateNames = getSlateNames(firstOperator, firstGameType);
+        const gameTypeToUse = state.selectedGameType || gameTypes[0];
+        const slateNames = getSlateNames(operatorToUse, gameTypeToUse);
 
         if (slateNames.length > 0) {
-          const firstSlateName = slateNames[0];
+          const slateNameToUse = state.selectedSlateName || slateNames[0];
 
           setState((prev) => ({
             ...prev,
-            selectedOperator: firstOperator,
-            selectedGameType: firstGameType,
-            selectedSlateName: firstSlateName,
+            selectedOperator: operatorToUse,
+            selectedGameType: gameTypeToUse,
+            selectedSlateName: slateNameToUse,
             isLoading: false,
           }));
         }
