@@ -1,7 +1,7 @@
 'use client'
 
-import React, { createContext, useContext, useState, ReactNode } from 'react'
-import { Player } from '@/services/fantasyDataService'
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react'
+import { Player, getOperators, getGameTypes, getSlateNames } from '@/services/fantasyDataService'
 
 interface FantasyFootballState {
   selectedOperator: string | null
@@ -60,6 +60,31 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     currentPage: 1,
     rowsPerPage: 8,
   })
+
+  // Auto-select first available options on page load
+  useEffect(() => {
+    const operators = getOperators()
+    if (operators.length > 0 && !state.selectedOperator) {
+      const firstOperator = operators[0]
+      const gameTypes = getGameTypes(firstOperator)
+      
+      if (gameTypes.length > 0) {
+        const firstGameType = gameTypes[0]
+        const slateNames = getSlateNames(firstOperator, firstGameType)
+        
+        if (slateNames.length > 0) {
+          const firstSlateName = slateNames[0]
+          
+          setState(prev => ({
+            ...prev,
+            selectedOperator: firstOperator,
+            selectedGameType: firstGameType,
+            selectedSlateName: firstSlateName,
+          }))
+        }
+      }
+    }
+  }, [state.selectedOperator])
 
   /**
    * Updates the selected fantasy sports operator and cascades reset to dependent filters.

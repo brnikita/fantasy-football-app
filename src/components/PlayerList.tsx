@@ -146,75 +146,76 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
         </TableBody>
       </Table>
 
-      <footer className="flex h-[71px] items-center justify-between px-8 py-4 relative self-stretch w-full bg-neutral-800 mt-auto">
-        <div className="flex items-center gap-4">
-          <span className="font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
-            Page
-          </span>
-          <Select 
-            value={state.currentPage.toString()} 
-            onValueChange={handlePageChange}
-            disabled={totalPages === 0}
-          >
-            <SelectTrigger className="w-fit h-12 fantasy-select fantasy-select-footer
-             [&>svg]:h-8 [&>svg]:w-8 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent className="fantasy-select-content">
-              {pageOptions.map((page) => (
-                <SelectItem key={page} value={page.toString()} className="fantasy-select-item">
-                  {page}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
+      {totalPlayers > 0 && (
+        <footer className="flex h-[71px] items-center justify-between px-8 py-4 relative self-stretch w-full bg-neutral-800 mt-auto">
+          <div className="flex items-center gap-4">
+            <span className="font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
+              Page
+            </span>
+            <Select 
+              value={state.currentPage.toString()} 
+              onValueChange={handlePageChange}
+            >
+              <SelectTrigger className="w-fit h-12 fantasy-select fantasy-select-footer
+               [&>svg]:h-8 [&>svg]:w-8 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="fantasy-select-content">
+                {pageOptions.map((page) => (
+                  <SelectItem key={page} value={page.toString()} className="fantasy-select-item">
+                    {page}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
-        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4">
+            <span className="font-inter font-normal text-white text-2xl text-center tracking-[0] leading-[normal]">
+              Rows per page
+            </span>
+            <Select 
+              value={state.rowsPerPage.toString()} 
+              onValueChange={handleRowsPerPageChange}
+            >
+              <SelectTrigger className="w-fit h-12 fantasy-select fantasy-select-footer
+               [&>svg]:h-8 [&>svg]:w-8 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="fantasy-select-content">
+                <SelectItem value="8" className="fantasy-select-item">8</SelectItem>
+                <SelectItem value="16" className="fantasy-select-item">16</SelectItem>
+                <SelectItem value="24" className="fantasy-select-item">24</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
           <span className="font-inter font-normal text-white text-2xl text-center tracking-[0] leading-[normal]">
-            Rows per page
+            {`${startIndex + 1} - ${endIndex} of ${totalPlayers}`}
           </span>
-          <Select 
-            value={state.rowsPerPage.toString()} 
-            onValueChange={handleRowsPerPageChange}
-          >
-            <SelectTrigger className="w-fit h-12 fantasy-select fantasy-select-footer
-             [&>svg]:h-8 [&>svg]:w-8 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent className="fantasy-select-content">
-              <SelectItem value="8" className="fantasy-select-item">8</SelectItem>
-              <SelectItem value="16" className="fantasy-select-item">16</SelectItem>
-              <SelectItem value="24" className="fantasy-select-item">24</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
 
-        <span className="font-inter font-normal text-white text-2xl text-center tracking-[0] leading-[normal]">
-          {totalPlayers > 0 ? `${startIndex + 1} - ${endIndex} of ${totalPlayers}` : "0 - 0 of 0"}
-        </span>
-
-        <div className="flex items-center gap-1">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="h-10 w-10 p-0 fantasy-button"
-            onClick={handlePreviousPage}
-            disabled={state.currentPage <= 1}
-          >
-            <ChevronLeftIcon className="!h-8 !w-8" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="h-10 w-10 p-0 fantasy-button"
-            onClick={handleNextPage}
-            disabled={state.currentPage >= totalPages}
-          >
-            <ChevronRightIcon className="!h-8 !w-8" />
-          </Button>
-        </div>
-      </footer>
+          <div className="flex items-center gap-1">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="h-10 w-10 p-0 fantasy-button"
+              onClick={handlePreviousPage}
+              disabled={state.currentPage <= 1}
+            >
+              <ChevronLeftIcon className="!h-8 !w-8" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="h-10 w-10 p-0 fantasy-button"
+              onClick={handleNextPage}
+              disabled={state.currentPage >= totalPages}
+            >
+              <ChevronRightIcon className="!h-8 !w-8" />
+            </Button>
+          </div>
+        </footer>
+      )}
     </div>
   )
 }
