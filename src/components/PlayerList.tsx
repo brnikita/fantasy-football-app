@@ -139,6 +139,20 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
                 </TableCell>
               </TableRow>
             ))
+          ) : players.length === 0 ? (
+            // Empty state message
+            <TableRow className="border-none">
+              <TableCell colSpan={5} className="px-8 py-12 text-center">
+                <div className="flex flex-col items-center gap-4">
+                  <div className="font-inter font-normal text-white/70 text-2xl">
+                    No players found for this selection
+                  </div>
+                  <div className="font-inter font-normal text-white/50 text-lg">
+                    Try selecting a different operator or game type
+                  </div>
+                </div>
+              </TableCell>
+            </TableRow>
           ) : (
             players.map((player) => (
               <TableRow
@@ -169,7 +183,7 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
         </TableBody>
       </Table>
 
-      {totalPlayers > 0 && (
+      {totalPlayers > 0 && !state.isLoading && (
         <footer className="flex h-[71px] items-center justify-between px-8 py-4 relative self-stretch w-full bg-neutral-800 mt-auto">
           <div className="flex items-center gap-4">
             <span className="font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">

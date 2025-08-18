@@ -18,13 +18,21 @@ export default function PlayerDetails() {
     <Card className={`w-[400px] min-w-[350px] h-[620px] bg-[#2f2f2f] rounded-lg overflow-hidden border-none ${state.isLoading ? 'card-loading' : ''}`}>
       <CardContent className="p-0 h-full flex flex-col">
         <div className="pt-12 pb-0 px-0 flex justify-center bg-[#1d1d1d]">
-          <Image
-            className="w-full h-64 object-cover"
-            alt={state.selectedPlayer?.name || "Player"}
-            src="/tom-brady-1.png"
-            width={400}
-            height={256}
-          />
+          {state.selectedPlayer ? (
+            <Image
+              className="w-full h-64 object-cover"
+              alt={state.selectedPlayer.name}
+              src="/tom-brady-1.png"
+              width={400}
+              height={256}
+            />
+          ) : (
+            <div className="w-full h-64 bg-[#2d2d2d] flex items-center justify-center">
+              <div className="text-white/50 text-lg">
+                Select a player to view details
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="flex flex-col h-[316px] items-start relative w-full rounded-[8px_8px_0px_0px] flex-1 text-white/90">
