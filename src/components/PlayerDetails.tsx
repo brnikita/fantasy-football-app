@@ -27,7 +27,7 @@ export default function PlayerDetails() {
               height={256}
             />
           ) : (
-            <div className="w-full h-64 bg-[#2d2d2d] flex items-center justify-center">
+            <div className="w-full h-64 flex items-center justify-center">
               <div className="text-white/50 text-lg">
                 Select a player to view details
               </div>

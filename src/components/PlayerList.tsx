@@ -141,9 +141,9 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
             ))
           ) : players.length === 0 ? (
             // Empty state message
-            <TableRow className="border-none">
-              <TableCell colSpan={5} className="px-8 py-12 text-center">
-                <div className="flex flex-col items-center gap-4">
+            <TableRow className="border-none hover:bg-transparent cursor-default">
+              <TableCell colSpan={5} className="px-8 text-center h-96">
+                <div className="flex flex-col items-center justify-center gap-4 h-full">
                   <div className="font-inter font-normal text-white/70 text-2xl">
                     No players found for this selection
                   </div>
