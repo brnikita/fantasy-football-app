@@ -122,7 +122,7 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
             // Show loading skeleton rows
             Array.from({ length: state.rowsPerPage }).map((_, index) => (
               <TableRow key={`loading-${index}`} className="border-none">
-                <TableCell className="px-8 py-4">
+                <TableCell className="px-8 pt-8 pb-4">
                   <div className="h-6 bg-gray-600 rounded table-loading"></div>
                 </TableCell>
                 <TableCell className="px-8 py-4">
