@@ -96,7 +96,7 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
   const pageOptions = Array.from({ length: totalPages }, (_, i) => i + 1)
 
   return (
-    <div className="flex flex-col w-[947px] h-[620px] bg-[#2f2f2f] rounded-lg overflow-hidden scrollbar-custom">
+    <div className={`flex flex-col w-[947px] h-[620px] bg-[#2f2f2f] rounded-lg overflow-hidden scrollbar-custom ${state.isLoading ? 'loading-container' : ''}`}>
       <Table className="w-full">
         <TableHeader className="fantasy-table-header bg-neutral-900">
           <TableRow className="border-none">
@@ -118,14 +118,36 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
           </TableRow>
         </TableHeader>
         <TableBody>
-          {players.map((player) => (
-            <TableRow
-              key={player.id}
-              onClick={() => handlePlayerClick(player)}
-              className={`border-none ${
-                state.selectedPlayer?.id === player.id ? "bg-[#7f7b0e]" : "bg-transparent"
-              } hover:bg-opacity-80 cursor-pointer`}
-            >
+          {state.isLoading ? (
+            // Show loading skeleton rows
+            Array.from({ length: state.rowsPerPage }).map((_, index) => (
+              <TableRow key={`loading-${index}`} className="border-none">
+                <TableCell className="px-8 py-4">
+                  <div className="h-6 bg-gray-600 rounded table-loading"></div>
+                </TableCell>
+                <TableCell className="px-8 py-4">
+                  <div className="h-6 bg-gray-600 rounded table-loading"></div>
+                </TableCell>
+                <TableCell className="px-8 py-4">
+                  <div className="h-6 bg-gray-600 rounded table-loading"></div>
+                </TableCell>
+                <TableCell className="px-8 py-4">
+                  <div className="h-6 bg-gray-600 rounded table-loading"></div>
+                </TableCell>
+                <TableCell className="px-8 py-4">
+                  <div className="h-6 bg-gray-600 rounded table-loading"></div>
+                </TableCell>
+              </TableRow>
+            ))
+          ) : (
+            players.map((player) => (
+              <TableRow
+                key={player.id}
+                onClick={() => handlePlayerClick(player)}
+                className={`border-none ${
+                  state.selectedPlayer?.id === player.id ? "bg-[#7f7b0e]" : "bg-transparent"
+                } hover:bg-opacity-80 cursor-pointer`}
+              >
               <TableCell className="px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
                 {player.name}
               </TableCell>
@@ -142,7 +164,8 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
                 {player.points}
               </TableCell>
             </TableRow>
-          ))}
+            ))
+          )}
         </TableBody>
       </Table>
 

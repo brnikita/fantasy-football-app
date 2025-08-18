@@ -10,6 +10,7 @@ interface FantasyFootballState {
   selectedPlayer: Player | null
   currentPage: number
   rowsPerPage: number
+  isLoading: boolean
 }
 
 interface FantasyFootballContextType {
@@ -20,6 +21,7 @@ interface FantasyFootballContextType {
   setSelectedPlayer: (player: Player | null) => void
   setCurrentPage: (page: number) => void
   setRowsPerPage: (rows: number) => void
+  setIsLoading: (loading: boolean) => void
 }
 
 const FantasyFootballContext = createContext<FantasyFootballContextType | undefined>(undefined)
@@ -59,30 +61,35 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     selectedPlayer: null,
     currentPage: 1,
     rowsPerPage: 8,
+    isLoading: true, // Start with loading state
   })
 
-  // Auto-select first available options on page load
+  // Auto-select first available options on page load with loading state
   useEffect(() => {
     const operators = getOperators()
     if (operators.length > 0 && !state.selectedOperator) {
-      const firstOperator = operators[0]
-      const gameTypes = getGameTypes(firstOperator)
-      
-      if (gameTypes.length > 0) {
-        const firstGameType = gameTypes[0]
-        const slateNames = getSlateNames(firstOperator, firstGameType)
+      // Simulate loading delay for better UX
+      setTimeout(() => {
+        const firstOperator = operators[0]
+        const gameTypes = getGameTypes(firstOperator)
         
-        if (slateNames.length > 0) {
-          const firstSlateName = slateNames[0]
+        if (gameTypes.length > 0) {
+          const firstGameType = gameTypes[0]
+          const slateNames = getSlateNames(firstOperator, firstGameType)
           
-          setState(prev => ({
-            ...prev,
-            selectedOperator: firstOperator,
-            selectedGameType: firstGameType,
-            selectedSlateName: firstSlateName,
-          }))
+          if (slateNames.length > 0) {
+            const firstSlateName = slateNames[0]
+            
+            setState(prev => ({
+              ...prev,
+              selectedOperator: firstOperator,
+              selectedGameType: firstGameType,
+              selectedSlateName: firstSlateName,
+              isLoading: false,
+            }))
+          }
         }
-      }
+      }, 800) // 800ms loading delay
     }
   }, [state.selectedOperator])
 
@@ -94,14 +101,20 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
    * @param operator - The fantasy sports platform name or null to clear selection
    */
   const setSelectedOperator = (operator: string | null) => {
-    setState(prev => ({
-      ...prev,
-      selectedOperator: operator,
-      selectedGameType: null, // Reset dependent selections
-      selectedSlateName: null,
-      selectedPlayer: null,
-      currentPage: 1,
-    }))
+    setState(prev => ({ ...prev, isLoading: true }))
+    
+    // Simulate loading delay
+    setTimeout(() => {
+      setState(prev => ({
+        ...prev,
+        selectedOperator: operator,
+        selectedGameType: null, // Reset dependent selections
+        selectedSlateName: null,
+        selectedPlayer: null,
+        currentPage: 1,
+        isLoading: false,
+      }))
+    }, 500)
   }
 
   /**
@@ -112,13 +125,19 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
    * @param gameType - The game type within the selected operator or null to clear
    */
   const setSelectedGameType = (gameType: string | null) => {
-    setState(prev => ({
-      ...prev,
-      selectedGameType: gameType,
-      selectedSlateName: null, // Reset dependent selections
-      selectedPlayer: null,
-      currentPage: 1,
-    }))
+    setState(prev => ({ ...prev, isLoading: true }))
+    
+    // Simulate loading delay
+    setTimeout(() => {
+      setState(prev => ({
+        ...prev,
+        selectedGameType: gameType,
+        selectedSlateName: null, // Reset dependent selections
+        selectedPlayer: null,
+        currentPage: 1,
+        isLoading: false,
+      }))
+    }, 500)
   }
 
   /**
@@ -129,12 +148,18 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
    * @param slateName - The specific contest/slate name or null to clear
    */
   const setSelectedSlateName = (slateName: string | null) => {
-    setState(prev => ({
-      ...prev,
-      selectedSlateName: slateName,
-      selectedPlayer: null,
-      currentPage: 1,
-    }))
+    setState(prev => ({ ...prev, isLoading: true }))
+    
+    // Simulate loading delay
+    setTimeout(() => {
+      setState(prev => ({
+        ...prev,
+        selectedSlateName: slateName,
+        selectedPlayer: null,
+        currentPage: 1,
+        isLoading: false,
+      }))
+    }, 500)
   }
 
   /**
@@ -178,6 +203,19 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     }))
   }
 
+  /**
+   * Updates the loading state for the application.
+   * Used to show loading animations while data is being processed.
+   * 
+   * @param loading - Boolean indicating if the app is in loading state
+   */
+  const setIsLoading = (loading: boolean) => {
+    setState(prev => ({
+      ...prev,
+      isLoading: loading,
+    }))
+  }
+
   return (
     <FantasyFootballContext.Provider
       value={{
@@ -188,6 +226,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         setSelectedPlayer,
         setCurrentPage,
         setRowsPerPage,
+        setIsLoading,
       }}
     >
       {children}

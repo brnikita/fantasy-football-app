@@ -15,7 +15,7 @@ export default function PlayerDetails() {
   const { state } = useFantasyFootball()
 
   return (
-    <Card className="w-[400px] h-[620px] bg-[#2f2f2f] rounded-lg overflow-hidden border-none">
+    <Card className={`w-[400px] h-[620px] bg-[#2f2f2f] rounded-lg overflow-hidden border-none ${state.isLoading ? 'card-loading' : ''}`}>
       <CardContent className="p-0 h-full flex flex-col">
         <div className="pt-12 pb-0 px-0 flex justify-center bg-[#1d1d1d]">
           <Image
@@ -28,17 +28,33 @@ export default function PlayerDetails() {
         </div>
 
         <div className="flex flex-col h-[316px] items-start relative w-full rounded-[8px_8px_0px_0px] flex-1 text-white/90">
-          <div className="w-full font-inter font-normal  text-[32px] text-center tracking-[0] leading-[72px]">
-            {state.selectedPlayer?.name || "Select a player"}
-          </div>
+          {state.isLoading ? (
+            <>
+              <div className="w-full h-[72px] flex justify-center items-center">
+                <div className="w-48 h-8 bg-gray-600 rounded table-loading"></div>
+              </div>
+              <div className="w-full h-[172px] flex justify-center items-center">
+                <div className="w-32 h-24 bg-gray-600 rounded table-loading"></div>
+              </div>
+              <div className="w-full h-4 flex justify-center items-center">
+                <div className="w-16 h-4 bg-gray-600 rounded table-loading"></div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="w-full font-inter font-normal  text-[32px] text-center tracking-[0] leading-[72px]">
+                {state.selectedPlayer?.name || "Select a player"}
+              </div>
 
-          <div className="w-full font-inter font-normal text-9xl text-center tracking-[0] leading-[172px]">
-            {state.selectedPlayer?.points || "0"}
-          </div>
+              <div className="w-full font-inter font-normal text-9xl text-center tracking-[0] leading-[172px]">
+                {state.selectedPlayer?.points || "0"}
+              </div>
 
-          <div className="w-full font-inter font-normal  text-base text-center tracking-[0] leading-4">
-            Points
-          </div>
+              <div className="w-full font-inter font-normal  text-base text-center tracking-[0] leading-4">
+                Points
+              </div>
+            </>
+          )}
         </div>
       </CardContent>
     </Card>

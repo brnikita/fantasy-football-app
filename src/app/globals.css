@@ -116,3 +116,87 @@
 .fantasy-select-footer {
   @apply gap-3;
 }
+
+/* Loading animations */
+@keyframes loading-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    opacity: 0.7;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes loading-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.loading-pulse {
+  animation: loading-pulse 1.5s ease-in-out infinite;
+}
+
+.loading-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: loading-shimmer 2s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.loading-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure body doesn't scroll during loading */
+body:has(.filter-loading) {
+  overflow-x: hidden;
+}
+
+/* Prevent any loading elements from causing overflow */
+.filter-loading,
+.card-loading,
+.loading-container {
+  overflow: hidden !important;
+}
+
+/* Fix shimmer animation to stay within bounds */
+.loading-shimmer {
+  overflow: hidden !important;
+  position: relative;
+}
+
+/* Loading state for filter controls */
+.filter-loading {
+  @apply loading-pulse;
+  pointer-events: none;
+  overflow: hidden !important;
+}
+
+/* Loading state for table rows */
+.table-loading {
+  @apply loading-pulse;
+}
+
+/* Loading state for cards */
+.card-loading {
+  @apply loading-pulse;
+  overflow: hidden !important;
+}

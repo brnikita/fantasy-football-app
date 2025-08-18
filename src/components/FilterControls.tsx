@@ -40,7 +40,7 @@ export default function FilterControls() {
 
   return (
     <section className="mx-auto mb-[70px] px-8">
-      <div className="bg-[#303030] rounded-lg h-[138px] w-full max-w-[1035px] gap-8 p-9 justify-center flex">
+      <div className={`bg-[#303030] rounded-lg h-[138px] w-full max-w-[1035px] gap-8 p-9 justify-center flex ${state.isLoading ? 'filter-loading' : ''}`}>
         {/* Operator Select */}
         <Select
           value={state.selectedOperator || ""}
