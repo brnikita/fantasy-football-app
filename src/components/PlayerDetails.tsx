@@ -4,6 +4,13 @@ import Image from 'next/image'
 import { Card, CardContent } from '@/components/ui/card'
 import { useFantasyFootball } from '@/contexts/FantasyFootballContext'
 
+/**
+ * Player details panel displaying selected player information in a card layout.
+ * Shows player image, name, and fantasy points in a focused detail view.
+ * Gracefully handles no-selection state with placeholder content.
+ * 
+ * @returns Card component with player image, name, and fantasy points display
+ */
 export default function PlayerDetails() {
   const { state } = useFantasyFootball()
 

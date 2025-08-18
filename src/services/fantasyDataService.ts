@@ -34,7 +34,13 @@ export interface GameData {
   players: { [operator: string]: { [gameType: string]: { [slateName: string]: Player[] } } }
 }
 
-// Parse the raw data and organize it into the structure we need
+/**
+ * Transforms raw JSON data into a hierarchical structure optimized for cascading filter selections.
+ * Creates nested objects for efficient O(1) lookups when users select operator → game type → slate name.
+ * Filters out defense/special teams players to focus on individual fantasy players.
+ * 
+ * @returns Structured data with operators as top-level keys, enabling dependent dropdown population
+ */
 export const getFantasyData = (): GameData => {
   const data = rawData as SlateData[]
   
@@ -127,21 +133,51 @@ export const getFantasyData = (): GameData => {
   }
 }
 
+/**
+ * Extracts unique fantasy sports operators from the dataset.
+ * Used to populate the first dropdown in the filter cascade, determining available platforms.
+ * 
+ * @returns Array of operator names (e.g., ['DraftKings', 'FanDuel'])
+ */
 export const getOperators = (): string[] => {
   const data = getFantasyData()
   return data.operators
 }
 
+/**
+ * Retrieves game types available for a specific operator.
+ * Enables dependent filtering where game type options change based on selected operator.
+ * 
+ * @param operator - The fantasy sports platform to get game types for
+ * @returns Array of game type strings, empty if operator not found
+ */
 export const getGameTypes = (operator: string): string[] => {
   const data = getFantasyData()
   return data.gameTypes[operator] || []
 }
 
+/**
+ * Fetches slate names (specific contests/tournaments) for an operator-gameType combination.
+ * Completes the filter hierarchy, providing the final level of contest selection.
+ * 
+ * @param operator - The fantasy sports platform
+ * @param gameType - The type of game within that platform
+ * @returns Array of slate/contest names, empty if combination not found
+ */
 export const getSlateNames = (operator: string, gameType: string): string[] => {
   const data = getFantasyData()
   return data.slateNames[operator]?.[gameType] || []
 }
 
+/**
+ * Retrieves the final player roster for a fully specified contest.
+ * Provides the actual fantasy players with salary and projection data for lineup building.
+ * 
+ * @param operator - The fantasy sports platform
+ * @param gameType - The type of game within that platform  
+ * @param slateName - The specific contest/slate name
+ * @returns Array of Player objects with fantasy-relevant data, empty if not found
+ */
 export const getPlayers = (operator: string, gameType: string, slateName: string): Player[] => {
   const data = getFantasyData()
   return data.players[operator]?.[gameType]?.[slateName] || []

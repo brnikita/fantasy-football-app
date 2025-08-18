@@ -27,6 +27,17 @@ interface PlayerListProps {
   endIndex: number
 }
 
+/**
+ * Tabular display of fantasy players with integrated pagination controls.
+ * Manages player selection state, page navigation, and rows-per-page configuration.
+ * Provides visual feedback for selected players and calculates pagination boundaries.
+ * 
+ * @param players - Array of players for current page
+ * @param totalPlayers - Total count across all pages for pagination calculation
+ * @param startIndex - Zero-based start index for current page display range
+ * @param endIndex - Zero-based end index for current page display range
+ * @returns Interactive player table with pagination footer
+ */
 export default function PlayerList({ players, totalPlayers, startIndex, endIndex }: PlayerListProps) {
   const { 
     state, 
@@ -37,24 +48,44 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
 
   const totalPages = Math.ceil(totalPlayers / state.rowsPerPage)
 
+  /**
+   * Updates the globally selected player when a table row is clicked.
+   * Triggers re-render of PlayerDetails component to show selected player information.
+   */
   const handlePlayerClick = (player: Player) => {
     setSelectedPlayer(player)
   }
 
+  /**
+   * Navigates to a different page via dropdown selection.
+   * Converts string value from Select component to number for state management.
+   */
   const handlePageChange = (newPage: string) => {
     setCurrentPage(parseInt(newPage))
   }
 
+  /**
+   * Updates the number of players displayed per page.
+   * Automatically resets to page 1 via context logic to prevent invalid page states.
+   */
   const handleRowsPerPageChange = (newRows: string) => {
     setRowsPerPage(parseInt(newRows))
   }
 
+  /**
+   * Navigates to the previous page if not already on the first page.
+   * Boundary checking prevents navigation below page 1.
+   */
   const handlePreviousPage = () => {
     if (state.currentPage > 1) {
       setCurrentPage(state.currentPage - 1)
     }
   }
 
+  /**
+   * Navigates to the next page if not already on the last page.
+   * Boundary checking prevents navigation beyond available data.
+   */
   const handleNextPage = () => {
     if (state.currentPage < totalPages) {
       setCurrentPage(state.currentPage + 1)

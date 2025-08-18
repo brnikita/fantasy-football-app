@@ -3,6 +3,13 @@ import Image from "next/image";
 import FilterControls from "./FilterControls";
 import PlayerDataTable from "./PlayerDataTable";
 
+/**
+ * Main dashboard component orchestrating the fantasy football application layout.
+ * Combines the header branding with the filter controls and player data sections,
+ * establishing the visual hierarchy and responsive container structure.
+ * 
+ * @returns Complete dashboard layout with header, filters, and player data components
+ */
 export default function FantasyDashboard() {
   return (
     <>

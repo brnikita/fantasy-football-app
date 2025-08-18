@@ -14,6 +14,13 @@ import {
   getSlateNames,
 } from "@/services/fantasyDataService";
 
+/**
+ * Cascading filter dropdown controls for fantasy sports data selection.
+ * Implements dependent dropdown behavior where each selection filters options for subsequent dropdowns.
+ * Automatically disables child dropdowns when parent selections are missing to guide user workflow.
+ * 
+ * @returns Three-tier filter interface: Operator → Game Type → Slate Name
+ */
 export default function FilterControls() {
   const {
     state,

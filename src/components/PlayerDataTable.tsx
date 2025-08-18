@@ -6,6 +6,13 @@ import PlayerDetails from './PlayerDetails'
 import { useFantasyFootball } from '@/contexts/FantasyFootballContext'
 import { getPlayers } from '@/services/fantasyDataService'
 
+/**
+ * Container component managing player data retrieval, pagination logic, and layout coordination.
+ * Calculates paginated player subsets and handles automatic player selection for the details panel.
+ * Bridges the filter state with the display components, ensuring data consistency across user interactions.
+ * 
+ * @returns Layout container with PlayerList and PlayerDetails components working on synchronized data
+ */
 export default function PlayerDataTable() {
   const { state, setSelectedPlayer } = useFantasyFootball()
 
