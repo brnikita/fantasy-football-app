@@ -1,7 +1,7 @@
 'use client'
 
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react'
-import { Player, getOperators, getGameTypes, getSlateNames } from '@/services/fantasyDataService'
+import { Player, getOperators, getGameTypes, getSlateNames, getPlayers } from '@/services/fantasyDataService'
 import { useUrlSync } from '@/hooks/useUrlSync'
 
 interface FantasyFootballState {
@@ -96,6 +96,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       operator: state.selectedOperator,
       gameType: state.selectedGameType,
       slateName: state.selectedSlateName,
+      playerId: state.selectedPlayer?.id || null,
       page: state.currentPage,
       rowsPerPage: state.rowsPerPage,
     });
@@ -103,11 +104,27 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     state.selectedOperator,
     state.selectedGameType,
     state.selectedSlateName,
+    state.selectedPlayer,
     state.currentPage,
     state.rowsPerPage,
     state.isLoading,
     updateUrl,
   ]);
+
+  // Handle player selection from URL
+  useEffect(() => {
+    if (urlParams.playerId && state.selectedOperator && state.selectedGameType && state.selectedSlateName && !state.isLoading) {
+      const players = getPlayers(state.selectedOperator, state.selectedGameType, state.selectedSlateName);
+      const playerFromUrl = players.find(player => player.id === urlParams.playerId);
+      
+      if (playerFromUrl) {
+        setState(prev => ({
+          ...prev,
+          selectedPlayer: playerFromUrl,
+        }));
+      }
+    }
+  }, [urlParams.playerId, state.selectedOperator, state.selectedGameType, state.selectedSlateName, state.isLoading]);
 
   // Handle loading state based on whether we have URL params or need to auto-select
   useEffect(() => {

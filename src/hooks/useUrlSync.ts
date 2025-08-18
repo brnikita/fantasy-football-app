@@ -30,19 +30,23 @@ export function useUrlSync() {
   const updateUrl = useCallback((params: Record<string, string | number | null>) => {
     if (!searchParams) return
     
-    const current = new URLSearchParams(searchParams.toString())
+    // Get current values and merge with updates
+    const currentParams = getFromUrl()
+    const updatedParams = { ...currentParams, ...params }
     
-    Object.entries(params).forEach(([key, value]) => {
-      if (value === null || value === undefined || value === '') {
-        current.delete(key)
-      } else {
-        current.set(key, value.toString())
-      }
-    })
+    // Build URL parameters in the desired order
+    const urlParams = new URLSearchParams()
+    
+    if (updatedParams.operator) urlParams.set('operator', updatedParams.operator)
+    if (updatedParams.gameType) urlParams.set('gameType', updatedParams.gameType)
+    if (updatedParams.slateName) urlParams.set('slateName', updatedParams.slateName)
+    if (updatedParams.page && updatedParams.page !== 1) urlParams.set('page', updatedParams.page.toString())
+    if (updatedParams.rowsPerPage && updatedParams.rowsPerPage !== 8) urlParams.set('rowsPerPage', updatedParams.rowsPerPage.toString())
+    if (updatedParams.playerId) urlParams.set('playerId', updatedParams.playerId)
 
-    const newUrl = `${pathname}?${current.toString()}`
+    const newUrl = `${pathname}?${urlParams.toString()}`
     router.replace(newUrl, { scroll: false })
-  }, [searchParams, pathname, router])
+  }, [searchParams, pathname, router, getFromUrl])
 
   return {
     getFromUrl,
