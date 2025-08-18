@@ -1,6 +1,6 @@
 # Fantasy Football Dashboard - Next.js Application
 
-A modern Next.js fantasy football application that displays real player data from `data.json` with dynamic filtering and pagination functionality.
+A modern Next.js fantasy football application that displays real player data from `data.json` with dynamic filtering and pagination functionality. Features enhanced UX with URL state management for bookmarkable and shareable filter selections.
 
 ## Quick Start
 
@@ -24,6 +24,39 @@ A modern Next.js fantasy football application that displays real player data fro
   ```
   http://localhost:3000
   ```
+
+---
+
+## ✨ Enhanced User Experience Features
+
+### 🔗 **URL State Management**
+
+**Improved UX with persistent state in URL parameters for bookmarkable and shareable selections:**
+
+- **Bookmarkable Filters** - Save specific filter combinations in the URL
+- **Shareable Links** - Share URLs with teammates containing exact filter states  
+- **Browser Navigation** - Back/forward buttons work seamlessly with filter history
+- **Page Refresh Persistence** - All selections survive page reloads
+- **Deep Linking** - Direct links to specific players and pagination states
+
+**Example URLs:**
+```
+# Basic filter selection
+http://localhost:3000/?operator=DraftKings&gameType=NFL&slateName=Main
+
+# With pagination and player selection  
+http://localhost:3000/?operator=FanDuel&gameType=NBA&slateName=Showdown&page=2&rowsPerPage=16&playerId=12345
+
+# Clean URLs with smart defaults (omits page=1, rowsPerPage=8)
+http://localhost:3000/?operator=DraftKings&gameType=NFL&slateName=Main&playerId=67890
+```
+
+**URL Parameter Order:**
+1. **Filters**: `operator` → `gameType` → `slateName`  
+2. **Pagination**: `page` → `rowsPerPage` (only if not defaults)
+3. **Selection**: `playerId`
+
+This enhancement transforms the app from a session-based tool to a shareable, bookmarkable platform that maintains user context across browser sessions.
 
 ---
 
