@@ -112,3 +112,7 @@
 .fantasy-select-item {
   @apply bg-[#1c1c1c] text-white font-inter font-normal text-2xl tracking-[0] leading-[normal] hover:bg-[#2f2f2f] focus:bg-[#2f2f2f] data-[state=checked]:bg-[#7f7b0e] py-3 px-4;
 }
+
+.fantasy-select-footer {
+  @apply gap-3;
+}

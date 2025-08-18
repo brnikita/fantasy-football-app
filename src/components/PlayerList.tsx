@@ -125,7 +125,8 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
             onValueChange={handlePageChange}
             disabled={totalPages === 0}
           >
-            <SelectTrigger className="w-fit h-12 fantasy-select [&>svg]:h-6 [&>svg]:w-6 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
+            <SelectTrigger className="w-fit h-12 fantasy-select fantasy-select-footer
+             [&>svg]:h-8 [&>svg]:w-8 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="fantasy-select-content">
@@ -146,7 +147,8 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
             value={state.rowsPerPage.toString()} 
             onValueChange={handleRowsPerPageChange}
           >
-            <SelectTrigger className="w-fit h-12 fantasy-select [&>svg]:h-6 [&>svg]:w-6 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
+            <SelectTrigger className="w-fit h-12 fantasy-select fantasy-select-footer
+             [&>svg]:h-8 [&>svg]:w-8 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="fantasy-select-content">
@@ -161,7 +163,7 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
           {totalPlayers > 0 ? `${startIndex + 1} - ${endIndex} of ${totalPlayers}` : "0 - 0 of 0"}
         </span>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <Button
             variant="ghost"
             size="sm"
@@ -169,7 +171,7 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
             onClick={handlePreviousPage}
             disabled={state.currentPage <= 1}
           >
-            <ChevronLeftIcon className="!h-6 !w-6" />
+            <ChevronLeftIcon className="!h-8 !w-8" />
           </Button>
           <Button
             variant="ghost"
@@ -178,7 +180,7 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
             onClick={handleNextPage}
             disabled={state.currentPage >= totalPages}
           >
-            <ChevronRightIcon className="!h-6 !w-6" />
+            <ChevronRightIcon className="!h-8 !w-8" />
           </Button>
         </div>
       </footer>
