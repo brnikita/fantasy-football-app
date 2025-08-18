@@ -65,7 +65,7 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
   const pageOptions = Array.from({ length: totalPages }, (_, i) => i + 1)
 
   return (
-    <div className="flex flex-col w-[947px] h-[620px] items-start relative bg-[#2f2f2f] rounded-lg overflow-hidden scrollbar-custom">
+    <div className="flex flex-col w-[947px] h-[620px] relative bg-[#2f2f2f] rounded-lg overflow-hidden scrollbar-custom">
       <Table className="w-full">
         <TableHeader className="fantasy-table-header">
           <TableRow className="border-none">
