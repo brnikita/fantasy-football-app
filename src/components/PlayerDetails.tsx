@@ -15,7 +15,7 @@ export default function PlayerDetails() {
   const { state } = useFantasyFootball()
 
   return (
-    <Card className={`w-[400px] h-[620px] bg-[#2f2f2f] rounded-lg overflow-hidden border-none ${state.isLoading ? 'card-loading' : ''}`}>
+    <Card className={`w-[400px] min-w-[350px] h-[620px] bg-[#2f2f2f] rounded-lg overflow-hidden border-none ${state.isLoading ? 'card-loading' : ''}`}>
       <CardContent className="p-0 h-full flex flex-col">
         <div className="pt-12 pb-0 px-0 flex justify-center bg-[#1d1d1d]">
           <Image

@@ -38,7 +38,7 @@ export default function PlayerDataTable() {
   }, [paginatedPlayers, state.selectedPlayer, setSelectedPlayer])
 
   return (
-    <section className="px-8 py-0 self-stretch w-full max-w-[1440px] mx-auto flex-[0_0_auto]
+    <section className="px-8 py-0 self-stretch w-full max-w-[1440px] min-w-[1200px] mx-auto flex-[0_0_auto]
      flex gap-6 mb-[30px]">
       <PlayerList 
         players={paginatedPlayers}
