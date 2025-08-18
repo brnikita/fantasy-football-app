@@ -104,11 +104,24 @@ export function PlayerDetailsSkeleton() {
  */
 export function FilterControlsSkeleton() {
   return (
-    <div className="flex gap-6 pb-[68px] self-stretch w-full max-w-[1440px] min-w-[1200px] mx-auto flex-[0_0_auto]">
-      <div className="w-[300px] h-12 bg-gray-600 rounded table-loading"></div>
-      <div className="w-[300px] h-12 bg-gray-600 rounded table-loading"></div>
-      <div className="w-[300px] h-12 bg-gray-600 rounded table-loading"></div>
-    </div>
+    <section className="mx-auto mb-[70px] px-8">
+      <div className="bg-[#303030] rounded-lg h-[138px] w-full max-w-[1035px] min-w-[900px] gap-8 p-9 justify-center flex filter-loading">
+        {/* Operator Select Skeleton */}
+        <div className="inline-flex items-center gap-4 px-8 py-4 fantasy-select rounded-lg h-auto min-w-[280px] max-w-[320px]">
+          <div className="w-full h-8 bg-gray-600 rounded table-loading"></div>
+        </div>
+        
+        {/* Game Type Select Skeleton */}
+        <div className="inline-flex items-center gap-4 px-8 py-4 fantasy-select rounded-lg h-auto min-w-[280px] max-w-[320px]">
+          <div className="w-full h-8 bg-gray-600 rounded table-loading"></div>
+        </div>
+        
+        {/* Slate Name Select Skeleton */}
+        <div className="inline-flex items-center gap-4 px-8 py-4 fantasy-select rounded-lg h-auto min-w-[280px] max-w-[320px]">
+          <div className="w-full h-8 bg-gray-600 rounded table-loading"></div>
+        </div>
+      </div>
+    </section>
   )
 }
 
