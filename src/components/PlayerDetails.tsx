@@ -15,9 +15,9 @@ export default function PlayerDetails() {
   const { state } = useFantasyFootball()
 
   return (
-    <Card className="w-[400px] h-[620px] fantasy-card rounded-lg overflow-hidden border-none">
+    <Card className="w-[400px] h-[620px] bg-[#2f2f2f] rounded-lg overflow-hidden border-none">
       <CardContent className="p-0 h-full flex flex-col">
-        <div className="pt-12 pb-0 px-0 flex justify-center">
+        <div className="pt-12 pb-0 px-0 flex justify-center bg-[#1d1d1d]">
           <Image
             className="w-full h-64 object-cover"
             alt={state.selectedPlayer?.name || "Player"}
@@ -27,7 +27,7 @@ export default function PlayerDetails() {
           />
         </div>
 
-        <div className="flex flex-col h-[316px] items-start relative w-full bg-[#2f2f2f] rounded-[8px_8px_0px_0px] flex-1 text-white/90">
+        <div className="flex flex-col h-[316px] items-start relative w-full rounded-[8px_8px_0px_0px] flex-1 text-white/90">
           <div className="w-full font-inter font-normal  text-[32px] text-center tracking-[0] leading-[72px]">
             {state.selectedPlayer?.name || "Select a player"}
           </div>
