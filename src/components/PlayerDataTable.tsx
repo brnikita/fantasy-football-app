@@ -39,7 +39,7 @@ export default function PlayerDataTable() {
 
   return (
     <section className="px-8 py-0 self-stretch w-full max-w-[1440px] mx-auto flex-[0_0_auto]
-     flex gap-6 mb-[30px] overflow-x-hidden">
+     flex gap-6 mb-[30px]">
       <PlayerList 
         players={paginatedPlayers}
         totalPlayers={totalPlayers}

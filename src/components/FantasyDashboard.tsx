@@ -27,7 +27,7 @@ export default function FantasyDashboard() {
           </h1>
         </div>
       </header>
-      <div className="w-full flex flex-col items-center bg-neutral-900 pt-[68px] overflow-x-hidden">
+      <div className="w-full flex flex-col items-center bg-neutral-900 pt-[68px]">
         <FilterControls />
         <PlayerDataTable />
       </div>

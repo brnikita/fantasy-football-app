@@ -165,18 +165,6 @@
   overflow: hidden;
 }
 
-/* Ensure body doesn't scroll during loading */
-body:has(.filter-loading) {
-  overflow-x: hidden;
-}
-
-/* Prevent any loading elements from causing overflow */
-.filter-loading,
-.card-loading,
-.loading-container {
-  overflow: hidden !important;
-}
-
 /* Fix shimmer animation to stay within bounds */
 .loading-shimmer {
   overflow: hidden !important;
@@ -187,6 +175,7 @@ body:has(.filter-loading) {
 .filter-loading {
   @apply loading-pulse;
   pointer-events: none;
+  /* Only prevent overflow on the specific loading element, not globally */
   overflow: hidden !important;
 }
 
@@ -198,5 +187,11 @@ body:has(.filter-loading) {
 /* Loading state for cards */
 .card-loading {
   @apply loading-pulse;
+  /* Only prevent overflow on the specific loading element, not globally */
+  overflow: hidden !important;
+}
+
+/* Prevent loading containers from expanding beyond bounds */
+.loading-container {
   overflow: hidden !important;
 }
