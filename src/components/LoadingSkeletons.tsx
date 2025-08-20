@@ -20,19 +20,19 @@ export function PlayerListSkeleton({ rowsPerPage = 8 }: { rowsPerPage?: number }
         <Table className="w-full">
           <TableHeader>
             <TableRow className="border-none">
-              <TableHead className="w-[200px] px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
+              <TableHead className="w-[30%] px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
                 Name
               </TableHead>
-              <TableHead className="w-16 px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] text-center">
+              <TableHead className="w-[17.5%] px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] text-center">
                 Team
               </TableHead>
-              <TableHead className="w-24 px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] text-center">
+              <TableHead className="w-[17.5%] px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] text-center">
                 Position
               </TableHead>
-              <TableHead className="w-24 px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] text-right">
+              <TableHead className="w-[17.5%] px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] text-right">
                 Salary
               </TableHead>
-              <TableHead className="w-[72px] px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] text-right">
+              <TableHead className="w-[17.5%] px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] text-right">
                 Points
               </TableHead>
             </TableRow>
@@ -46,19 +46,19 @@ export function PlayerListSkeleton({ rowsPerPage = 8 }: { rowsPerPage?: number }
           <TableBody>
             {Array.from({ length: rowsPerPage }).map((_, index) => (
               <TableRow key={`loading-${index}`} className="border-none">
-                <TableCell className="px-8 pt-8 pb-4">
+                <TableCell className="w-[30%] px-8 pt-8 pb-4">
                   <div className="h-6 bg-gray-600 rounded table-loading"></div>
                 </TableCell>
-                <TableCell className="px-8 py-4">
+                <TableCell className="w-[17.5%] px-8 py-4">
                   <div className="h-6 bg-gray-600 rounded table-loading"></div>
                 </TableCell>
-                <TableCell className="px-8 py-4">
+                <TableCell className="w-[17.5%] px-8 py-4">
                   <div className="h-6 bg-gray-600 rounded table-loading"></div>
                 </TableCell>
-                <TableCell className="px-8 py-4">
+                <TableCell className="w-[17.5%] px-8 py-4">
                   <div className="h-6 bg-gray-600 rounded table-loading"></div>
                 </TableCell>
-                <TableCell className="px-8 py-4">
+                <TableCell className="w-[17.5%] px-8 py-4">
                   <div className="h-6 bg-gray-600 rounded table-loading"></div>
                 </TableCell>
               </TableRow>

@@ -98,22 +98,22 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
   return (
     <div className={`flex flex-col w-[947px] min-w-[800px] h-[620px] bg-[#2f2f2f] rounded-lg overflow-hidden ${state.isLoading ? 'loading-container' : ''}`}>
       <div className="fantasy-table-header bg-neutral-900 rounded-t-lg">
-        <Table className="w-full">
+        <Table className="w-full table-fixed">
           <TableHeader>
-            <TableRow className="border-none">
-              <TableHead className="w-[200px] px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
+            <TableRow className="border-none hover:bg-transparent">
+              <TableHead className="w-[30%] px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
                 Name
               </TableHead>
-              <TableHead className="w-16 px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] text-center">
+              <TableHead className="w-[17.5%] px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] text-center">
                 Team
               </TableHead>
-              <TableHead className="w-24 px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] text-center">
+              <TableHead className="w-[17.5%] px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] text-center">
                 Position
               </TableHead>
-              <TableHead className="w-24 px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] text-right">
+              <TableHead className="w-[17.5%] px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] text-right">
                 Salary
               </TableHead>
-              <TableHead className="w-[72px] px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] text-right">
+              <TableHead className="w-[17.5%] px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal] text-right">
                 Points
               </TableHead>
             </TableRow>
@@ -123,25 +123,25 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
       
       {/* Scrollable Body */}
       <div className="flex-1 overflow-auto scrollbar-custom">
-        <Table className="w-full">
+        <Table className="w-full table-fixed">
           <TableBody>
           {state.isLoading ? (
             // Show loading skeleton rows
             Array.from({ length: state.rowsPerPage }).map((_, index) => (
               <TableRow key={`loading-${index}`} className="border-none">
-                <TableCell className="px-8 pt-8 pb-4">
+                <TableCell className="w-[30%] px-8 pt-8 pb-4">
                   <div className="h-6 bg-gray-600 rounded table-loading"></div>
                 </TableCell>
-                <TableCell className="px-8 py-4">
+                <TableCell className="w-[17.5%] px-8 py-4">
                   <div className="h-6 bg-gray-600 rounded table-loading"></div>
                 </TableCell>
-                <TableCell className="px-8 py-4">
+                <TableCell className="w-[17.5%] px-8 py-4">
                   <div className="h-6 bg-gray-600 rounded table-loading"></div>
                 </TableCell>
-                <TableCell className="px-8 py-4">
+                <TableCell className="w-[17.5%] px-8 py-4">
                   <div className="h-6 bg-gray-600 rounded table-loading"></div>
                 </TableCell>
-                <TableCell className="px-8 py-4">
+                <TableCell className="w-[17.5%] px-8 py-4">
                   <div className="h-6 bg-gray-600 rounded table-loading"></div>
                 </TableCell>
               </TableRow>
@@ -169,19 +169,19 @@ export default function PlayerList({ players, totalPlayers, startIndex, endIndex
                   state.selectedPlayer?.id === player.id ? "bg-[#7f7b0e]" : "bg-transparent"
                 } hover:bg-opacity-80 cursor-pointer`}
               >
-              <TableCell className="px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
+              <TableCell className="w-[30%] px-8 py-4 font-inter font-normal text-white text-2xl tracking-[0] leading-[normal]">
                 {player.name}
               </TableCell>
-              <TableCell className="px-8 py-4 font-inter font-normal text-white text-2xl text-center tracking-[0] leading-[normal]">
+              <TableCell className="w-[17.5%] px-8 py-4 font-inter font-normal text-white text-2xl text-center tracking-[0] leading-[normal]">
                 {player.team}
               </TableCell>
-              <TableCell className="px-8 py-4 font-inter font-normal text-white text-2xl text-center tracking-[0] leading-[normal]">
+              <TableCell className="w-[17.5%] px-8 py-4 font-inter font-normal text-white text-2xl text-center tracking-[0] leading-[normal]">
                 {player.position}
               </TableCell>
-              <TableCell className="px-8 py-4 font-inter font-normal text-white text-2xl text-right tracking-[0] leading-[normal]">
+              <TableCell className="w-[17.5%] px-8 py-4 font-inter font-normal text-white text-2xl text-right tracking-[0] leading-[normal]">
                 {player.salary}
               </TableCell>
-              <TableCell className="px-8 py-4 font-inter font-normal text-white text-2xl text-right tracking-[0] leading-[normal]">
+              <TableCell className="w-[17.5%] px-8 py-4 font-inter font-normal text-white text-2xl text-right tracking-[0] leading-[normal]">
                 {player.points}
               </TableCell>
             </TableRow>
